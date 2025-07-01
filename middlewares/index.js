@@ -13,5 +13,11 @@ req.json({
 });
 });
 
+app.get("/fine",function (req,res){
+req.json({
+        message:"thats great, what can i help ?"
+});
+});
+
 app.listen(3000);
 

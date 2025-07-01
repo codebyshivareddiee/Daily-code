@@ -7,7 +7,7 @@ app.use(express.json());
 function generateId() {
     return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
 }
-/// get all todos 
+/// get all todos listed  
 app.get('/userid/:userid/todos', function (req, res) {
     const userid = Number(req.params.userid);
     const allUsers = loadTodos();
@@ -20,7 +20,7 @@ app.get('/userid/:userid/todos', function (req, res) {
         return res.status(404).json({ message: "User not found" });
     }
 });
-//get todo with id
+//get todo with id into the user account 
 app.get('/userid/:userid/todos/:todoid', function (req, res) {
     const userid = Number(req.params.userid);
      const todoid = req.params.todoid;
@@ -34,7 +34,7 @@ app.get('/userid/:userid/todos/:todoid', function (req, res) {
         return res.status(404).json({ message: "User not found" });
     }
 });
-//to post or create a todo from body
+//to post or create a todo from body as input 
 app.post('/userid/:userid/todos', function (req, res) {
     const todoid = generateId();
     const userid=Number(req.params.userid);
@@ -51,7 +51,7 @@ app.post('/userid/:userid/todos', function (req, res) {
         return res.status(404).json({ user: "User not found" });
     }
 });
-// to delete a todo with todo id
+// to delete a todo with todo id from the user account
 app.delete('/userid/:userid/todos/:todoid', function (req, res) {
     const userid = Number(req.params.userid);
     const todoid = req.params.todoid;
